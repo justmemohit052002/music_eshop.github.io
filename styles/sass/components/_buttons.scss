@@ -1,0 +1,118 @@
+@use '../abstracts/' as a;
+@use '../base/' as b;
+
+
+@mixin red-btn($width: 6em, $height: 2em, $font-size: b.get-font-size('fs-m')) {
+    @include a.button($width, $height, $font-size);
+    position: relative;
+    overflow: hidden;
+    background-color: a.$red;
+    color: a.$white;
+    @include a.transition();
+
+    &:hover {
+        transform: scale(110%);
+        cursor: pointer;
+    }
+}
+
+@mixin black-btn($width: 6em, $height: 2em, $font-size: b.get-font-size('fs-m')) {
+    position: relative;
+    @include a.button($width, $height, $font-size);
+    background-color: black;
+    color: a.$white;
+    border: solid 2px a.$red;
+    @include a.transition();
+
+    &::before {
+        @include a.transition(250ms);
+        border-radius: 10px;
+        position: absolute;
+        width: 0;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        opacity: 0;
+        content: "";
+        background-color: a.$red;
+        z-index: -1;
+    }
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(110%);
+    }
+
+    &:hover::before {
+        width: 100%;
+        left: 0;
+        right: 0;
+        opacity: 1;
+        transform: scale(105%);
+    }
+}
+
+@mixin red-img-btn($width: 1.5em, $height: 1.5em, $font-size: b.get-font-size('fs-xl')) {
+    @include a.img-btn($width, $height, $font-size);
+    color: a.$red;
+    @include a.transition();
+
+    &:hover {
+        color: a.$light-red;
+        transform: scale(110%);
+        cursor: pointer;
+    }
+}
+
+.hamburger-btn {
+    position: relative;
+    border: none;
+    background: none;
+    width: 2em;
+    height: 2em;
+
+    span {
+        @include a.transition(200ms);
+        position: absolute;
+        display: block;
+        background-color: a.$red;
+        width: 100%;
+        height: 3.25px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    span:nth-child(1) {
+        @include a.transition(200ms);
+        transform: translate(-50%, -50%) translateY(-10px);
+    }
+
+    span:nth-child(4) {
+        @include a.transition(200ms);
+        transform: translate(-50%, -50%) translateY(10px);
+    }
+
+    &:hover span {
+        background-color: a.$light-red;
+    }
+}
+
+@mixin darkblue-img-btn($width: 2em, $height: 2em, $font-size: b.get-font-size('fs-xxl')) {
+    @include a.img-btn($width, $height, $font-size);
+    color: a.$white;
+    border: none;
+    border-radius: 10px;
+    @include a.transition();
+
+    &:hover {
+        background-color: a.$jeans;
+        transform: translateY(-10%);
+        box-shadow: 0px 10px 15px black;
+        cursor: pointer;
+    }
+
+    &:active {
+        background-color: a.$light-blue;
+    }
+}

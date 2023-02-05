@@ -1,0 +1,25 @@
+@use "./sass/abstracts/" as a;
+@use "./sass/base/" as b;
+@use "./sass/sections/" as s;
+@use "./sass/media-queries/" as q;
+@import url("https://fonts.googleapis.com/css2?family=Heebo&display=swap");
+
+* {
+  font-family: a.$font-primary;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: a.$page-min-width;
+}
+
+header {
+  @include a.transition(500ms);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  z-index: 5;
+}

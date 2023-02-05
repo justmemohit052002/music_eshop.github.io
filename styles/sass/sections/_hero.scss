@@ -1,0 +1,86 @@
+@use "sass:math";
+@use "../abstracts/" as a;
+@use "../base/" as b;
+@use "../components/" as c;
+
+$hero-font-size: b.get-font-size("fs-l");
+
+.hero {
+  @include a.flex(row, center, flex-start);
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.25),
+      a.$dark-blue
+    ),
+    url("/assets/guitar-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: a.$hero-height;
+  padding-top: math.div(a.$hero-height, 6);
+
+  &__container {
+    text-align: center;
+    color: a.$white;
+
+    &__title {
+      width: 300px;
+      height: auto;
+      margin-top: 2.5em;
+      margin-bottom: 3em;
+
+      path {
+        stroke-dasharray: 1000px;
+        stroke-dashoffset: 1000px;
+        fill: transparent;
+        animation: title-animation 5s ease forwards;
+      }
+    }
+
+    &__h1 {
+      @extend .h1;
+      background-image: linear-gradient(to right, orange, a.$red, a.$dark-red);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    &__text {
+      font-weight: bold;
+      height: $hero-font-size + 0.75rem;
+      font-size: $hero-font-size;
+      line-height: $hero-font-size + 0.75rem;
+      @include a.flex(row, center);
+      overflow: hidden;
+
+      & p {
+        display: inline;
+      }
+
+      &__list {
+        list-style: none;
+        text-align: left;
+        color: a.$red;
+        margin: 0 1em;
+        animation: switch-hero 10s linear infinite;
+
+        &__item {
+          line-height: $hero-font-size + 0.75rem;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+
+    &__h3 {
+      font-size: b.get-font-size("fs-m");
+      margin: 1em 0;
+      padding: 0 1em;
+    }
+
+    &__signup-btn {
+      @include c.black-btn(8em, $font-size: b.get-font-size("fs-m"));
+      margin-top: 1em;
+    }
+  }
+}

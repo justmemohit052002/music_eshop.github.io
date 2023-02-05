@@ -1,0 +1,57 @@
+@use "../abstracts/" as a;
+@use "../base/" as b;
+
+@include a.media-query(a.$breakpoint-tablet) {
+  .hero {
+    min-height: a.$hero-height + 350px;
+
+    &__container {
+      margin-top: 100px;
+
+      &__title {
+        width: 500px;
+      }
+
+      &__text {
+        font-size: b.get-font-size("fs-xxl");
+      }
+
+      &__h3 {
+        font-size: b.get-font-size("fs-xl");
+      }
+
+      &__signup-btn {
+        font-size: b.get-font-size("fs-xl");
+        margin-top: 2em;
+      }
+    }
+  }
+}
+
+@include a.desktop() {
+  .hero {
+    justify-content: flex-start;
+
+    &__container {
+      text-align: left;
+      margin-left: 15vw;
+
+      &__title {
+        width: 800px;
+      }
+
+      &__h1 {
+        margin-left: 0;
+      }
+
+      &__text {
+        @include a.flex(row, flex-start);
+      }
+
+      &__h3 {
+        padding: 0;
+        width: 500px;
+      }
+    }
+  }
+}

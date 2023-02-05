@@ -1,0 +1,37 @@
+@use "../abstracts/" as a;
+@use "../base/" as b;
+
+@include a.media-query(a.$breakpoint-tablet) {
+  .nav {
+    display: none;
+  }
+  .header--mobile {
+    display: none;
+  }
+  .header--desktop {
+    display: initial;
+  }
+}
+
+@include a.desktop() {
+  .header--desktop {
+    &__top {
+      &__wrap {
+        &__logo {
+          font-size: b.get-font-size("fs-xl");
+        }
+      }
+
+      &__links {
+        font-size: b.get-font-size("fs-l");
+      }
+    }
+
+    &__bottom {
+      height: 60px;
+      &__links {
+        font-size: b.get-font-size("fs-l");
+      }
+    }
+  }
+}

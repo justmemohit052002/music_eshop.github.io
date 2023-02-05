@@ -1,0 +1,43 @@
+@use "../abstracts/" as a;
+@use "../base/" as b;
+@use "../components/" as c;
+
+.header--mobile {
+  @include a.flex-center();
+  justify-content: space-between;
+  padding: 1em;
+  color: a.$red;
+  @include a.transition();
+  transition-duration: 250ms;
+  transition-delay: 250ms;
+
+  .header__logo {
+    @include a.flex-center(row);
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    &:hover #M {
+      @include a.transition();
+      fill: a.$light-red;
+    }
+
+    &:hover #Ellipse {
+      @include a.transition();
+      stroke: a.$light-red;
+    }
+  }
+
+  .header__btn-wrapper {
+    @include a.flex-center();
+  }
+
+  .header__login-btn {
+    @include c.red-btn($font-size: get-font-size("fs-ms"));
+  }
+
+  .header__nav-btn {
+    @extend .hamburger-btn;
+  }
+}

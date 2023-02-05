@@ -1,0 +1,49 @@
+@use '../abstracts' as a;
+@use '../base' as b;
+@use '../components' as c;
+
+@include a.tablet {
+    .footer {
+        &__container {
+            &__flex-box {
+                font-size: b.get-font-size('fs-m')
+            }
+    
+            &__wrap {
+                &__notice {
+                    font-size: b.get-font-size('fs-ms');
+                }
+            }
+        }
+    }
+}
+
+@include a.desktop {
+    .footer {
+        &__container {
+            @include a.flex(row, space-between, center);
+            min-height: 250px;
+            width: 80vw;
+            min-width: a.$breakpoint-desktop - 50px;
+
+            &__sub-box {
+                display: initial;
+            }
+
+            &__flex-box {
+                font-size: b.get-font-size('fs-l');
+                min-width: 500px;
+                width: 30vw;
+            }
+        
+            &__wrap {
+                text-align: center;
+                width: 20vw;
+
+                &__notice {
+                    font-size: b.get-font-size('fs-ms');
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,96 @@
+@use "../abstracts/" as a;
+@use "../base/" as b;
+
+$review-card-offset: 0.5em;
+
+.item-card {
+  position: relative;
+  @include a.flex-center(column);
+  @include a.transition(250ms);
+  background-color: rgba(white, 0.1);
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(black, 0.5);
+  border-radius: 1em;
+  border: 1px solid rgba(white, 0.2);
+  border-bottom: 1px solid rgba(white, 0);
+  border-right: 1px solid rgba(white, 0);
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+
+  &::before {
+    @include a.transition(0.3s);
+    position: absolute;
+    content: "";
+    top: 0;
+    left: a.$card-width * 2;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(white, 0.2);
+    transform: skew(45deg);
+  }
+
+  &:hover {
+    transform: translateY(-5%);
+    cursor: pointer;
+  }
+
+  & *:hover {
+    cursor: pointer;
+  }
+
+  &:hover::before {
+    left: -(a.$card-width * 2);
+  }
+}
+
+.review-card {
+  @include a.transition(250ms);
+  position: relative;
+  border-radius: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: b.get-font-size("fs-ms");
+  overflow: hidden;
+  border: 1px solid rgba(white, 0.5);
+  border-bottom: 1px solid rgba(white, 0);
+  border-right: 1px solid rgba(white, 0);
+  transform-style: preserve-3d;
+  box-shadow: 0px 10px 10px rgba(black, 0.3);
+
+  &::after,
+  &::before {
+    @include a.transition(500ms);
+    content: "";
+    position: absolute;
+    z-index: 2;
+    border: 2.5px solid rgba(orange, 0);
+    width: 0;
+    height: 0;
+  }
+
+  &::before {
+    bottom: $review-card-offset;
+    left: $review-card-offset;
+    border-top: none;
+    border-right: none;
+  }
+
+  &::after {
+    top: $review-card-offset;
+    right: $review-card-offset;
+    border-bottom: none;
+    border-left: none;
+  }
+
+  &:hover::after {
+    border-color: rgba(orange, 1);
+    width: calc(100% - #{$review-card-offset} * 2 - 2.5px);
+    height: calc(100% - #{$review-card-offset} * 2 - 2.5px);
+  }
+
+  &:hover::before {
+    border-color: rgba(orange, 1);
+    width: calc(100% - #{$review-card-offset} * 2 - 2.5px - 2.5px);
+    height: calc(100% - #{$review-card-offset} * 2 - 2.5px);
+  }
+}

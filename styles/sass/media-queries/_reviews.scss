@@ -1,0 +1,40 @@
+@use "../abstracts/" as a;
+
+@include a.media-query(a.$breakpoint-tablet) {
+  .reviews {
+    &__container {
+      width: 75vw;
+      @include a.grid(2, 2);
+      justify-items: center;
+
+      &__wrap {
+        &__card {
+          min-height: 250px;
+          min-width: 250px;
+        }
+      }
+    }
+
+    #liquid-drop3 {
+      left: 5%;
+    }
+
+    #liquid-drop4 {
+      top: 50%;
+      left: 60%;
+    }
+
+    #liquid-drop5 {
+      top: 80%;
+    }
+  }
+}
+
+@include a.desktop() {
+  .reviews {
+    height: a.$reviews-height;
+    &__container {
+      @include a.grid(2, 3);
+    }
+  }
+}

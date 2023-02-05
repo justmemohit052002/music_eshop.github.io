@@ -1,0 +1,118 @@
+@use "../abstracts/" as a;
+@use "../components/" as c;
+
+.rise-anim-active {
+  animation: note-rise 4s calc(var(--i) * 1.15s) ease-in infinite;
+}
+
+.rotate-anim-active {
+  animation: rotate-animation 5s calc(var(--i) * 1s) linear infinite;
+}
+
+.about {
+  @include a.flex-center(column);
+  overflow-x: hidden;
+  background: a.$dark-blue;
+  color: a.$white;
+  padding: 2em;
+  min-height: a.$about-height;
+
+  &__container {
+    @include a.flex-center(column);
+    text-align: center;
+
+    &__h3 {
+      @extend .h3;
+      margin: 0 0.5em;
+    }
+
+    &__illustration-box {
+      position: relative;
+      max-width: 800px;
+      min-width: 200px;
+      width: 80vw;
+      height: 50vw;
+      min-height: 200px;
+      max-height: 500px;
+      @include a.flex-center(row);
+      margin: 0 auto;
+
+      &__guitar {
+        transform: translateX(-2000px);
+        max-width: 150px;
+        width: 15vw;
+        min-width: 50px;
+      }
+
+      &__guitar:nth-child(1) {
+        @include a.transition(500ms, ease-out);
+        position: absolute;
+        left: 2.5%;
+        top: 20%;
+      }
+
+      &__guitar:nth-child(2) {
+        @include a.transition(750ms, ease-out);
+        position: absolute;
+        top: 55%;
+        left: 17.5%;
+      }
+
+      &__img {
+        @include a.transition(1s, ease-out);
+        transform: translateX(2000px);
+        position: absolute;
+        right: 0;
+        max-width: 450px;
+        width: 50vw;
+        min-width: 200px;
+        height: auto;
+      }
+
+      &__note {
+        color: a.$red;
+        width: 20px;
+        width: 5vw;
+        max-width: 40px;
+        height: auto;
+      }
+
+      #note1 {
+        @include a.transition(1.15s, ease-out);
+        position: absolute;
+        right: 10%;
+        top: 2.5%;
+        transform: translateX(2000px);
+      }
+
+      #note2 {
+        @include a.transition(1.45s, ease-out);
+        position: absolute;
+        right: 0;
+        top: 25%;
+        transform: translateX(2000px);
+      }
+
+      #note3 {
+        @include a.transition(1.3s, ease-out);
+        position: absolute;
+        left: 31.5%;
+        top: 10%;
+        transform: translateX(-2000px);
+      }
+
+      #note4 {
+        @include a.transition(1.5s, ease-out);
+        position: absolute;
+        left: 20%;
+        top: 45%;
+        transform: translateX(-2000px);
+      }
+    }
+
+    &__p {
+      font-style: italic;
+      max-width: 800px;
+    }
+  }
+}

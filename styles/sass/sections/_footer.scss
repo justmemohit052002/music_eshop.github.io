@@ -1,0 +1,83 @@
+@use "../abstracts/" as a;
+@use "../base/" as b;
+@use "../components/" as c;
+
+.footer {
+  @include a.flex-center();
+  background-color: black;
+  color: a.$white;
+  font-size: b.get-font-size("fs-ms");
+
+  &__container {
+    @include a.flex-center(column);
+    padding: 1em;
+
+    &__sub-box {
+      display: none;
+
+      &__h3 {
+        font-size: b.get-font-size("fs-xl");
+      }
+
+      &__wrap {
+        @extend .simple-submit;
+        padding: 0 1em;
+        min-width: 250px;
+        width: 20vw;
+        max-width: 400px;
+        height: 3em;
+        margin-top: 1em;
+
+        input {
+          font-size: b.get-font-size("fs-m");
+        }
+      }
+    }
+
+    &__flex-box {
+      @include a.flex(row, space-around);
+
+      &__links {
+        padding: 0.5em;
+
+        &__list {
+          @include a.clear-ul();
+
+          &__item {
+            a {
+              color: a.$white;
+            }
+
+            a:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    &__wrap {
+      &__social-medias {
+        @include a.flex-center();
+        margin: 1em 0.5em;
+
+        a {
+          text-decoration: none;
+          img {
+            min-width: 50px;
+            width: 10vw;
+            max-width: 60px;
+            height: auto;
+            padding: 0.5em;
+          }
+        }
+      }
+
+      &__notice {
+        text-align: center;
+        font-size: b.get-font-size("fs-s");
+        text-decoration: underline;
+      }
+    }
+  }
+}

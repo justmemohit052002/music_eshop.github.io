@@ -1,0 +1,24 @@
+@use "../abstracts/" as a;
+@use "../base/" as b;
+
+@include a.media-query(a.$breakpoint-tablet) {
+  .about {
+    height: a.$about-height + 500px;
+
+    &__container {
+      &__h3 {
+        font-size: b.get-font-size("fs-xxl");
+      }
+
+      &__illustration-box {
+        &__note {
+          font-size: b.get-font-size("fs-desk-ml");
+        }
+      }
+
+      &__p {
+        font-size: b.get-font-size("fs-xl");
+      }
+    }
+  }
+}

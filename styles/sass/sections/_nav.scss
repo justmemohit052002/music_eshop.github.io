@@ -1,0 +1,40 @@
+@use '../abstracts/' as a;
+@use '../base/' as b;
+@use '../components/' as c;
+
+.nav {
+    @include a.transition(500ms, ease-out);
+    position: fixed;
+    top: -100%;
+    z-index: 4;
+    background-color: rgb(42, 42, 42);
+    min-width: a.$page-min-width;
+    height: 100%;
+    width: 100%;
+    padding: 1.5em;
+    padding-top: a.$header-height;
+    font-size: b.get-font-size('fs-xl');
+    font-weight: bold;
+    overflow-y: hidden;
+
+    &__link-list {
+        @extend .nav-list;
+    }
+
+    &__social-medias {
+        @include a.flex-center();
+        margin: 2em 0;
+
+        a {
+            text-decoration: none;
+            
+            img {
+                min-width: 50px;
+                max-width: 75px;
+                width: 10vw;
+                height: auto;
+                padding: 0 0.25em;
+            }
+        }
+    }
+}

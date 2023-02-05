@@ -1,0 +1,131 @@
+@use "../abstracts/" as a;
+@use "../base/" as b;
+@use "../components/" as c;
+
+$review-font-size: b.get-font-size("fs-xl");
+$review-content-lines: 7;
+$img-size: 75px;
+
+.reviews {
+  @include a.flex-center(column);
+  background-color: a.$red;
+  justify-content: center;
+  position: relative;
+  font-size: $review-font-size;
+  color: a.$white;
+
+  &__container {
+    margin: 50px 0;
+
+    &__wrap {
+      position: relative;
+      margin: 2em 0;
+      perspective: 750px;
+
+      &__card {
+        @extend .review-card;
+        min-height: 275px;
+        min-width: 200px;
+        width: 20vw;
+        height: 20vw;
+        max-width: 300px;
+        max-height: 300px;
+
+        &__content {
+          @include a.transition(500ms);
+          width: 100%;
+          position: absolute;
+          bottom: 0;
+          background: rgba(black, 0.5);
+          padding: 1em;
+
+          & p {
+            margin-bottom: 0.5em;
+            font-style: italic;
+          }
+
+          & span {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    #review-card1 {
+      background-image: linear-gradient(
+          to bottom,
+          rgba(black, 0),
+          rgba(black, 0.75)
+        ),
+        url("/assets/einziger.jpg");
+    }
+
+    #review-card2 {
+      background-image: linear-gradient(
+          to bottom,
+          rgba(black, 0),
+          rgba(black, 0.75)
+        ),
+        url("/assets/matt-mcguire.jpg");
+    }
+
+    #review-card3 {
+      background-image: linear-gradient(
+          to bottom,
+          rgba(black, 0),
+          rgba(black, 0.75)
+        ),
+        url("/assets/stricagnoli.jpg");
+    }
+
+    #review-card4 {
+      background-image: linear-gradient(
+          to bottom,
+          rgba(black, 0),
+          rgba(black, 0.75)
+        ),
+        url("/assets/reviewer4.jpg");
+    }
+  }
+
+  &__liquid-drop {
+    border-radius: 54% 46% 42% 58% / 60% 58% 42% 40%;
+    border: 1px solid rgba(#ffffff, 0.4);
+    border-bottom: 1px solid rgba(#ffffff, 0.2);
+    border-right: 1px solid rgba(#ffffff, 0.2);
+    background-image: linear-gradient(
+      to top right,
+      orange,
+      a.$red,
+      a.$dark-red
+    );
+    background-size: 300%;
+    animation: blob 5s linear calc(var(--i) * 1s) infinite,
+      wave-rise 4s ease-in calc(var(--i) * 1s) infinite,
+      gradient-transition 2s linear infinite alternate;
+  }
+
+  #liquid-drop1 {
+    @include a.bubble(5vw, 25px, 100px, -10%, 30%);
+  }
+
+  #liquid-drop2 {
+    @include a.bubble(10vw, 50px, 200px, -5%, 80%);
+  }
+
+  #liquid-drop3 {
+    @include a.bubble(15vw, 75px, 150px, -2.5%, 10%);
+  }
+
+  #liquid-drop4 {
+    @include a.bubble(7.5vw, 30px, 125px, 25%, 75%);
+  }
+
+  #liquid-drop5 {
+    @include a.bubble(10vw, 50px, 200px, 40%, 5%);
+  }
+
+  #liquid-drop6 {
+    @include a.bubble(5vw, 25px, 100px, 70%, 80%);
+  }
+}

@@ -1,0 +1,93 @@
+@use "../abstracts/" as a;
+
+.link-list {
+  @include a.flex(row, space-between);
+  @include a.clear-ul();
+  font-weight: bold;
+
+  li {
+    margin: 0 0.5em;
+    @include a.flex(row, space-between, center);
+    position: relative;
+
+    a {
+      margin-left: 0.25em;
+      @include a.transition();
+      color: a.$red;
+    }
+
+    &::after {
+      @include a.transition(350ms, ease-out);
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: a.$red;
+      width: 0;
+      opacity: 0;
+      z-index: -1;
+    }
+
+    &:hover::after {
+      left: 0;
+      right: 0;
+      width: 100%;
+      opacity: 1;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.nav-list {
+  @include a.clear-ul();
+
+  li {
+    @include a.transition(350ms, ease-in);
+    @include a.flex-center(row);
+    text-align: center;
+    transition-delay: calc(var(--i) * 0.1s);
+    position: relative;
+    padding: 0.5em 0;
+    opacity: 0;
+
+    i {
+      color: a.$red;
+    }
+
+    a {
+      margin-left: 0.25em;
+      position: relative;
+      @include a.transition(250ms);
+      color: a.$white;
+    }
+
+    a::after {
+      @include a.transition(250ms);
+      content: "";
+      background-color: a.$red;
+      position: absolute;
+      left: 50%;
+      right: 50%;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      opacity: 0;
+      z-index: -1;
+    }
+
+    a:hover {
+      color: a.$red;
+    }
+
+    a:hover::after {
+      width: auto;
+      left: 0;
+      right: 0;
+      opacity: 1;
+    }
+  }
+}

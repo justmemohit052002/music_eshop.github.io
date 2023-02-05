@@ -1,0 +1,33 @@
+@use "../abstracts/" as a;
+@use "../base/" as b;
+
+@include a.media-query(a.$breakpoint-tablet) {
+  .carousel {
+    height: a.$carousel-height + 150px;
+    &__h2 {
+      font-size: b.get-font-size("fs-desk-m");
+    }
+
+    &__card-container {
+      height: 40vw;
+      max-height: 400px;
+    }
+
+    &__btn-wrapper {
+      &__btn {
+        width: b.get-font-size("fs-desk-xxl");
+        height: b.get-font-size("fs-desk-xxl");
+
+        i {
+          font-size: b.get-font-size("fs-desk-l");
+        }
+      }
+    }
+
+    &__wave-container {
+      #wave3 {
+        left: 200px;
+      }
+    }
+  }
+}

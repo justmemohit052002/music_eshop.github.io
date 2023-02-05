@@ -1,0 +1,23 @@
+@use "../base/" as b;
+
+.h1 {
+  font-size: b.get-font-size("fs-xxl");
+  font-weight: bold;
+  margin: 1em;
+}
+
+.h2 {
+  font-size: b.get-font-size("fs-xl");
+  font-weight: bold;
+  margin: 0.5em;
+}
+
+.h3 {
+  font-size: b.get-font-size("fs-l");
+  font-weight: bold;
+}
+
+.h4 {
+  font-size: b.get-font-size("fs-ml");
+  font-weight: bold;
+}

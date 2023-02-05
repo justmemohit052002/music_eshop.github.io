@@ -1,0 +1,12 @@
+@import '../abstracts';
+
+.ripple {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: ripple-effect 1s linear forwards;
+}

@@ -1,0 +1,89 @@
+@use '../base/typography' as b;
+@use '../abstracts/variables' as v;
+
+@mixin flex($direction: row, $justify: flex-start, $align: stretch) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin flex-center($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+@mixin clear-ul {
+    list-style: none;
+
+    li a {
+        text-decoration: none;
+    }
+}
+
+@mixin grid($rows, $columns, $column-unit: 1fr, $row-unit: 1fr) {
+    display: grid;
+    grid-template-rows: repeat($rows, $row-unit);
+    grid-template-columns: repeat($columns, $column-unit);
+}
+
+@mixin button($width: 6em, $height: 2em, $font-size: b.get-font-size('fs-m')) {
+    border: none;
+    border-radius: 10px;
+    width: $width;
+    height: $height;
+    margin: 0 1em;
+    font-weight: bold;
+    font-size: $font-size;
+}
+
+@mixin img-btn($width: 1.5em, $height: 1.5em, $font-size: b.get-font-size('fs-xl')) {
+    font-size: $font-size;
+    width: $width;
+    height: $height;
+    background: none;
+    border: none;
+}
+
+@mixin transition($duration: 150ms, $timing-function: ease-out) {
+    transition: all $duration $timing-function;
+}
+
+@mixin bubble($size, $min-size, $max-size, $top, $left) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    min-width: $min-size;
+    min-height: $min-size;
+    width: $size;
+    height: $size;
+    max-width: $max-size;
+    max-height: $max-size;
+}
+
+@mixin tablet() {
+    @media screen and (min-width: v.$breakpoint-tablet) and (max-width: v.$breakpoint-desktop) {
+        @content;
+    }
+};
+
+@mixin desktop() {
+    @media screen and (min-width: v.$breakpoint-desktop) {
+        @content;
+    }
+};
+
+@mixin media-query($from, $to: false) {
+    @if $to {
+        @media screen and (min-width: $from) and (max-width: $to) {
+            @content;
+        }
+    } @else {
+        @media screen and (min-width: $from){
+            @content;
+        }
+    }
+}

@@ -1,0 +1,85 @@
+@use '../abstracts/' as a;
+@use '../base/' as b;
+
+.red-search-bar {
+    @include a.flex(row, space-between, center);
+    @include a.transition();
+    border-radius: 25px;
+    background-color: a.$red;
+    box-shadow: 0px 0px 0px 0px a.$light-red;
+
+    input {
+        color: a.$white;
+        height: 100%;
+        width: 100%;
+        border-radius: 25px;
+        background-color: a.$red;
+        border: none;
+        padding: 0.5em;
+        outline: none;
+
+        &::placeholder {
+            color: a.$white;
+        }
+    }
+
+    button {
+        @include a.transition();
+        position: relative;
+        right: 5px;
+        border: none;
+        background: none;
+        border-radius: 15px;
+        background: a.$red;
+        
+        svg {
+            #glass {
+                stroke: white;
+            }
+    
+            #handle {
+                fill: white;
+            }
+        }
+        
+        &:hover {
+            cursor: pointer;
+            background-color: a.$light-red;
+        }
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 2px 2px a.$light-red;
+    }
+}
+
+.simple-submit {
+    @include a.flex(row, space-between, center);
+    padding: 0.25em;
+    background: white;
+    border-radius: 20px;
+
+    input {
+        height: 100%;
+        padding: 0.2em;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+    }
+
+    svg {
+        #arrow {
+            @include a.transition(300ms, ease-out);
+            transform-origin: center;
+            stroke: black;
+        }
+
+        &:hover {
+            #arrow {
+                stroke: a.$red;
+                fill: a.$red;
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
